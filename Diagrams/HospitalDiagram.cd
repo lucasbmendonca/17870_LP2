@@ -15,17 +15,31 @@
         <Position X="-0.807" Y="0.027" />
       </MemberNameLabel>
     </AssociationLine>
+    <AssociationLine Name="Rooms" Type="_17870_LP2.Commands.Room" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.094" Y="5.546" />
+        <Point X="4.094" Y="7.139" />
+        <Point X="2.921" Y="7.139" />
+        <Point X="2.921" Y="10.375" />
+        <Point X="2.375" Y="10.375" />
+        <Point X="2.375" Y="10.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.882" Y="0.083" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAACABAAAAAAAAAAAAAAAAQCAAAAAAACBgAAAAAAAAA=</HashCode>
       <FileName>Models\HospitalData.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Director" />
       <Property Name="Address" />
+      <Property Name="Director" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Patients" />
       <Property Name="Doctors" />
+      <Property Name="Patients" />
+      <Property Name="Rooms" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="_17870_LP2.Commands.Patient">
@@ -100,8 +114,8 @@
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Specializations" />
-      <Property Name="Hospitals" />
       <Property Name="Patients" />
+      <Property Name="Hospitals" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="_17870_LP2.Models.Address">
