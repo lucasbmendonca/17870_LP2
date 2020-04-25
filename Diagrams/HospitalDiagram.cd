@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="_17870_LP2.Hospital">
+    <Position X="0.75" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAACAgAQAAAAAAkCAAIAAAAAAEAAAAAA=</HashCode>
+      <FileName>Entities\Hospital.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_17870_LP2.Models.HospitalData">
+    <Position X="4" Y="4.25" Width="1.5" />
+    <AssociationLine Name="Patients" Type="_17870_LP2.Commands.Patient">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.807" Y="0.027" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAAAAAAAAAAAAQCAAAAAAACBgAAAAAAAAA=</HashCode>
+      <FileName>Models\HospitalData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Director" />
+      <Property Name="Address" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Patients" />
+      <Property Name="Doctors" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="_17870_LP2.Commands.Patient">
+    <Position X="4.25" Y="7.75" Width="2.5" />
+    <InheritanceLine Type="_17870_LP2.Models.PatientData" FixedFromPoint="true">
+      <Path>
+        <Point X="13.25" Y="9.375" />
+        <Point X="8.208" Y="9.375" Type="JumpStart" />
+        <Point X="8.042" Y="9.375" Type="JumpEnd" />
+        <Point X="6.75" Y="9.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAACACAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Entities\Patient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="_17870_LP2.Models.PatientData">
+    <Position X="13.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAABCAAAAAAAAAAAAAAgAACAAAgAA=</HashCode>
+      <FileName>Models\PatientData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_17870_LP2.Models.UserData">
+    <Position X="15.5" Y="3.25" Width="1.5" />
+    <AssociationLine Name="Address" Type="_17870_LP2.Models.Address" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="3.344" />
+        <Point X="8.875" Y="3.344" />
+        <Point X="8.875" Y="2.684" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAACEIAAAAgAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Models\UserData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Address" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_17870_LP2.Models.User">
+    <Position X="13.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAQAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_17870_LP2.Commands.Doctor">
+    <Position X="6.75" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAYAAAACkAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Entities\Doctor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_17870_LP2.Models.DoctorData">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <AssociationLine Name="Patients" Type="_17870_LP2.Commands.Patient" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.344" Y="5.934" />
+        <Point X="10.344" Y="8.688" />
+        <Point X="8.208" Y="8.688" Type="JumpStart" />
+        <Point X="8.042" Y="8.688" Type="JumpEnd" />
+        <Point X="6.75" Y="8.688" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAEA=</HashCode>
+      <FileName>Models\DoctorData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Specializations" />
+      <Property Name="Hospitals" />
+      <Property Name="Patients" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="_17870_LP2.Models.Address">
+    <Position X="8" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_17870_LP2.Models.AddressData">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAAAAAAAIIAAEAAAAAAIAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\AddressData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_17870_LP2.Commands.Room">
+    <Position X="0.5" Y="10.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAQAAAAAAkAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Room.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_17870_LP2.Models.RoomData">
+    <Position X="1" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAAAAAAAAAAEAAAAAAAAAAAAAAFAAAAIAAAAA=</HashCode>
+      <FileName>Models\RoomData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Hospital" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Patients" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="_17870_LP2.Commands.Note">
+    <Position X="4.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Note.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_17870_LP2.Models.NoteData">
+    <Position X="7.75" Y="10.75" Width="1.75" />
+    <AssociationLine Name="Patient" Type="_17870_LP2.Commands.Patient" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.625" Y="10.75" />
+        <Point X="8.625" Y="10.375" />
+        <Point X="8.208" Y="10.375" Type="JumpStart" />
+        <Point X="8.042" Y="10.375" Type="JumpEnd" />
+        <Point X="5.812" Y="10.375" />
+        <Point X="5.812" Y="10.011" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAEAAAAAAAAAAAQAAAAAIAAACAA=</HashCode>
+      <FileName>Models\NoteData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Patient" />
+      <Property Name="Doctor" />
+      <Property Name="Prescription" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_17870_LP2.Commands.Prescription">
+    <Position X="10.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Prescription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_17870_LP2.Models.PrescriptionData">
+    <Position X="13.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAIAAAAAAEACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PrescriptionData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="_17870_LP2.Interfaces.IDoctor">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDoctor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="_17870_LP2.Interfaces.IPatient">
+    <Position X="2.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPatient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="_17870_LP2.Models.Specialization" Collapsed="true">
+    <Position X="12" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAQAAIAAgRAAAEAAAAAAAAEAgEIAAAAAAAEAAA=</HashCode>
+      <FileName>Models\DoctorData.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
