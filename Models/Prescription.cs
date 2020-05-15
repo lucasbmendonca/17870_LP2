@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace _17870_LP2.Models
 {
-    class PrescriptionData
+    class Prescription
     {
         public int Id { get; protected set; }
         public string MedicineName { get; set; }

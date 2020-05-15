@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace _17870_LP2.Models
 {
-    class DiseaseData
+    class Disease
     {
         public static int totalCount;
         public int Id { get; protected set; }

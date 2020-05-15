@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.Core" Version="3.3.106.21" />
     <PackageReference Include="EPPlus" Version="5.1.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.OData.Edm" Version="7.6.4" />
     <PackageReference Include="Microsoft.VisualStudio.Designer.Interfaces" Version="1.1.4323" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

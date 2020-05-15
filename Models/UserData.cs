@@ -7,7 +7,7 @@ namespace _17870_LP2.Models
 {
     class UserData
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public string IdentityCard { get; set; } /*Unique*/
         public string FirstName { get; set; }
         public string LastName { get; set; }

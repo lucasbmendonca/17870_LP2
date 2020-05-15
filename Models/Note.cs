@@ -1,12 +1,8 @@
-﻿using _17870_LP2.Commands;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System;
 
 namespace _17870_LP2.Models
 {
-    class NoteData
+    class Note
     {
         public int Id { get; set; }
         public string Content { get; set; }

@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace _17870_LP2.Models
 {
-    class AddressData
+    class Address
     {
         public int Id { get; protected set; }
         public string Address1 { get; set; }
