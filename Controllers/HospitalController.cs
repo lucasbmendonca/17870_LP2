@@ -41,7 +41,7 @@ namespace _17870_LP2.Controllers
         #endregion
 
         #region Methods
-        public bool CreateHospital(string hospitalName, Address hospitalAddress)
+        public Hospital CreateHospital(string hospitalName, Address hospitalAddress)
         {
             try
             {
@@ -51,9 +51,9 @@ namespace _17870_LP2.Controllers
             {
                 Console.WriteLine(e.Message);
             }
-            return false;
+            return null;
         }
-        public bool AddDoctor(Hospital hospital, Doctor doctor)
+        public Doctor AddDoctorToHospital(Hospital hospital, Doctor doctor)
         {
             try
             {
@@ -63,9 +63,9 @@ namespace _17870_LP2.Controllers
             {
                 Console.WriteLine(e.Message);
             }
-            return false;
+            return null;
         }
-        public bool RemoveDoctor(Hospital hospital, Doctor doctor)
+        public bool RemoveDoctorFromHospital(Hospital hospital, Doctor doctor)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace _17870_LP2.Controllers
             }
             return false;
         }
-        public bool AddRoom(Hospital hospital, Room room)
+        public Room AddRoomToHospital(Hospital hospital, Room room)
         {
             try
             {
@@ -87,9 +87,9 @@ namespace _17870_LP2.Controllers
             {
                 Console.WriteLine(e.Message);
             }
-            return false;
+            return null;
         }
-        public bool RemoveRoom(Hospital hospital, Room room)
+        public bool RemoveRoomFromHospital(Hospital hospital, Room room)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace _17870_LP2.Controllers
             }
             return false;
         }
-        public bool AddPatient(Hospital hospital, Patient patient)
+        public Patient AddPatientToHospital(Hospital hospital, Patient patient)
         {
             try
             {
@@ -111,13 +111,13 @@ namespace _17870_LP2.Controllers
             {
                 Console.WriteLine(e.Message);
             }
-            return false;
+            return null;
         }
-        public bool RemovePatient(Hospital hospital, Patient patient)
+        public bool RemovePatientFromHospital(Hospital hospital, Patient patient)
         {
             try
             {
-                return _hospitalService.AddPatient(hospital, patient);
+                return _hospitalService.RemovePatient(hospital, patient);
             }
             catch (Exception e)
             {
@@ -132,7 +132,7 @@ namespace _17870_LP2.Controllers
         public bool SaveAll()
         {
             //save data into database
-            return true;
+            return _hospitalService.SaveAll();
         }
         #endregion
     }

@@ -8,7 +8,6 @@ namespace _17870_LP2.Models
 {
     class Prescription
     {
-        public int Id { get; protected set; }
         public string MedicineName { get; set; }
         public int HoursInterval { get; set; }
         public int DaysInterval { get; set; }

@@ -21,23 +21,34 @@ namespace _17870_LP2
         #endregion
 
         #region Methods
-        public static Doctor CreateDoctor(string identityCard, string firstName)
-        {  
+        public static Doctor CreateDoctor(string identityCard, string firstName, string lastName, Genre genre, int age, string contact, Address address, ICollection<Specialization> specializations)
+        {
+            //check if the doctor already exists
             if (!(_doctors.Any(d => d.IdentityCard == identityCard)))
             {
+                //If not, create
                 Doctor doctor = new Doctor();
                 doctor.IdentityCard = identityCard;
                 doctor.FirstName = firstName;
+                doctor.LastName = lastName;
+                doctor.Genre = genre;
+                doctor.Age = age;
+                doctor.Contact = contact;
+                doctor.Address = address;
+                doctor.Specializations = specializations;
+
                 _doctors.Add(doctor);
                 return doctor;
             }
             return null;
         }
-        public static bool RemoveDoctor(Doctor doctor)
+        public static bool RemoveDoctor(string identityCard)
         {
-            var findDoctor = _doctors.Where(i => i.IdentityCard == doctor.IdentityCard).FirstOrDefault();
+            //Check if the doctor exists
+            var findDoctor = _doctors.Where(i => i.IdentityCard == identityCard).FirstOrDefault();
             if (findDoctor != null)
             {
+                //If exists, remove
                 _doctors.Remove(findDoctor);
                 return true;
             }

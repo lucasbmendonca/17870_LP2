@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace _17870_LP2.Models
 {
@@ -20,10 +21,8 @@ namespace _17870_LP2.Models
     }
     class Doctor : UserData
     {
+        public DateTime AdmissionDateTime { get; set; }
+        public DateTime DischargeDateTime { get; set; }
         public ICollection<Specialization> Specializations { get; set; }
-        
-        //public ICollection<PatientData> Patients { get; set; }
-        
-        //public ICollection<HospitalData> Hospitals { get; set; }
     }
 }

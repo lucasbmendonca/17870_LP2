@@ -7,8 +7,6 @@ namespace _17870_LP2.Models
 {
     class Disease
     {
-        public static int totalCount;
-        public int Id { get; protected set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

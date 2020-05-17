@@ -10,22 +10,18 @@ namespace _17870_LP2.Services
     {
         #region Attributes
         private static List<Hospital> _hospitals { get; set; }
-        public static int _totalCountHospitals;
-        public static int _totalCountDoctors;
-        public static int _totalCountPatients;
-        public static int _totalCountRooms;
         #endregion
 
         #region Constructor
         public HospitalService()
         {
             //Initialize Hospital List from file, from database or create a new one
-            _hospitals = new List<Hospital>();
+            _hospitals = HospitalRepository.GetData();
         }
         #endregion
 
         #region Methods
-        public bool CreateHospital(string hospitalName, Address hospitalAddress)
+        public Hospital CreateHospital(string hospitalName, Address hospitalAddress)
         {
             //Checks whether the internal list of hospitals is initialized
             if (_hospitals != null)
@@ -35,14 +31,14 @@ namespace _17870_LP2.Services
                 if (findHospital == null)
                 {
                     var newHospital = new Hospital();
-                    newHospital.Id = Interlocked.Increment(ref _totalCountHospitals);
+                    //newHospital.Id = Interlocked.Increment(ref _totalCountHospitals);
                     newHospital.Name = hospitalName;
                     newHospital.Address = hospitalAddress;
                     newHospital.Doctors = new List<Doctor>();
                     newHospital.Patients = new List<Patient>();
                     newHospital.Rooms = new List<Room>();
                     _hospitals.Add(newHospital);
-                    return true;
+                    return newHospital;
                 }
                 else
                     throw new Exception("Data persistence error. Hospital " + hospitalName + " is already registered.");
@@ -50,7 +46,7 @@ namespace _17870_LP2.Services
             else
                 throw new Exception("Internal error. The list of hospitals has not been initialized.");
         }
-        public bool AddDoctor(Hospital hospital, Doctor doctor)
+        public Doctor AddDoctor(Hospital hospital, Doctor doctor)
         {
             //Check if the hospital is already created
             if (CheckHospital(hospital))
@@ -59,13 +55,14 @@ namespace _17870_LP2.Services
                 //Adds new doctor if he doesn't exist on the hospital's doctor list
                 if (findDoctor == null)
                 {   
-                    doctor.Id = Interlocked.Increment(ref _totalCountDoctors);
+                    //doctor.Id = Interlocked.Increment(ref _totalCountDoctors);
+                    doctor.AdmissionDateTime = DateTime.Now;
                     hospital.Doctors.Add(doctor);
                     
                     /*Adds a new hospital to the list of hospitals where the doctor works
                     doctor.Hospitals.Add(hospital);*/
                     
-                    return true;
+                    return doctor;
                 }
                 else
                     throw new Exception("Data persistence error. Doctor with Identity Card " +
@@ -81,11 +78,12 @@ namespace _17870_LP2.Services
             if (CheckHospital(hospital))
             {
                 //Check if the doctor ID received is on the hospital's doctor list
-                var findDoctor = hospital.Doctors.Where(i => i.Id == doctor.Id).FirstOrDefault();
+                var findDoctor = hospital.Doctors.Where(i => i.IdentityCard == doctor.IdentityCard).FirstOrDefault();
                 if (findDoctor != null)
                 {
                     //Removes the doctor from the hospital's doctor list
-                    hospital.Doctors.Remove(findDoctor);
+                    doctor.DischargeDateTime = DateTime.Now;
+                    //hospital.Doctors.Remove(findDoctor);
 
                     /*Removes from the list of hospitals where the doctor works
                     doctor.Hospitals.Remove(hospital);*/
@@ -99,8 +97,7 @@ namespace _17870_LP2.Services
                 throw new Exception("Data persistence error. Hospital " + hospital.Name +
                                     " not registered.");
         }
-
-        public bool AddRoom(Hospital hospital, Room room)
+        public Room AddRoom(Hospital hospital, Room room)
         {
             //Check if the hospital is already created
             if (CheckHospital(hospital))
@@ -109,9 +106,9 @@ namespace _17870_LP2.Services
                 var findRoom = hospital.Rooms.Where(i => i.Number == room.Number).FirstOrDefault();
                 if (findRoom == null)
                 {
-                    room.Id = Interlocked.Increment(ref _totalCountRooms);
+                    //room.Id = Interlocked.Increment(ref _totalCountRooms);
                     hospital.Rooms.Add(room);
-                    return true;
+                    return room;
                 }
                 else
                     throw new Exception("Data persistence error. Room number " + room.Number +
@@ -141,14 +138,14 @@ namespace _17870_LP2.Services
                 throw new Exception("Data persistence error. Hospital " + hospital.Name +
                                     " not registered.");
         }
-        public bool AddPatient(Hospital hospital, Patient patient)
+        public Patient AddPatient(Hospital hospital, Patient patient)
         {
             if (CheckHospital(hospital))
             {
                 //Check if the doctor's list is associated with this hospital
                 if (hospital.Doctors.All(d => patient.Doctors.Contains(d)))
                 {
-                    if (hospital.Rooms.Contains(patient.Room))
+                    if (hospital.Rooms.Contains(patient.Room) && patient.Room.IsAvailable == true )
                     {
                         //Checks if the patient has not been admitted to any other hospital
                         if(_hospitals.ToList().Any(h => h.Patients.Contains(patient))) {
@@ -156,10 +153,10 @@ namespace _17870_LP2.Services
                                                     " is already in another Hospital ");
                         }
                         //Add patient to hospital patient lists
-                        patient.Id = Interlocked.Increment(ref _totalCountPatients);
+                        //patient.Id = Interlocked.Increment(ref _totalCountPatients);
                         patient.AdmissionDateTime = DateTime.Now;
                         hospital.Patients.Add(patient);
-                        return true;
+                        return patient;
                     }
                     else
                         throw new Exception("Data persistence error. Room number " + patient.Room.Number +
@@ -177,7 +174,7 @@ namespace _17870_LP2.Services
         {
             if (CheckHospital(hospital))
             {
-                var findPatient = hospital.Patients.Where(i => i.Id == patient.Id).FirstOrDefault();
+                var findPatient = hospital.Patients.Where(i => i.IdentityCard == patient.IdentityCard).FirstOrDefault();
                 if (patient != null)
                 {
                     findPatient.DischargeDateTime = DateTime.Now;
@@ -199,6 +196,26 @@ namespace _17870_LP2.Services
         public Hospital GetHospital(string hospitalName)
         {
             return _hospitals.Where(h => h.Name == hospitalName).FirstOrDefault();
+        }
+        public List<Hospital> GetAllHospitals()
+        {
+            return _hospitals;
+        }
+        public ICollection<Doctor> GetAllDoctors(string hospitalName)
+        {
+            return GetHospital(hospitalName).Doctors;
+        }
+        public ICollection<Patient> GetAllPatients(string hospitalName)
+        {
+            return GetHospital(hospitalName).Patients;
+        }
+        public ICollection<Room> GetAllRooms(string hospitalName)
+        {
+            return GetHospital(hospitalName).Rooms;
+        }
+        public bool SaveAll()
+        {
+            return HospitalRepository.Save(_hospitals);
         }
         #endregion
     }
