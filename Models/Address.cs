@@ -7,7 +7,6 @@ namespace _17870_LP2.Models
 {
     class Address
     {
-        //public int Id { get; protected set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string City { get; set; }

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace _17870_LP2.Services
 {
@@ -31,7 +30,6 @@ namespace _17870_LP2.Services
                 if (findHospital == null)
                 {
                     var newHospital = new Hospital();
-                    //newHospital.Id = Interlocked.Increment(ref _totalCountHospitals);
                     newHospital.Name = hospitalName;
                     newHospital.Address = hospitalAddress;
                     newHospital.Doctors = new List<Doctor>();
@@ -55,7 +53,6 @@ namespace _17870_LP2.Services
                 //Adds new doctor if he doesn't exist on the hospital's doctor list
                 if (findDoctor == null)
                 {   
-                    //doctor.Id = Interlocked.Increment(ref _totalCountDoctors);
                     doctor.AdmissionDateTime = DateTime.Now;
                     hospital.Doctors.Add(doctor);
                     
@@ -106,7 +103,6 @@ namespace _17870_LP2.Services
                 var findRoom = hospital.Rooms.Where(i => i.Number == room.Number).FirstOrDefault();
                 if (findRoom == null)
                 {
-                    //room.Id = Interlocked.Increment(ref _totalCountRooms);
                     hospital.Rooms.Add(room);
                     return room;
                 }
@@ -153,7 +149,6 @@ namespace _17870_LP2.Services
                                                     " is already in another Hospital ");
                         }
                         //Add patient to hospital patient lists
-                        //patient.Id = Interlocked.Increment(ref _totalCountPatients);
                         patient.AdmissionDateTime = DateTime.Now;
                         hospital.Patients.Add(patient);
                         return patient;

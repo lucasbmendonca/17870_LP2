@@ -61,6 +61,38 @@ namespace _17870_LP2.Factory
         {
             return _patients.Where(i => i.IdentityCard == identityCard).FirstOrDefault();
         }
+        public static Patient AddNote(string identityCard, Note note)
+        {
+            if (note == null) { return null; }
+            var patient = GetPatient(identityCard);
+            if (patient != null)
+            {
+                patient.Notes.Add(note);
+            }
+            return patient;
+        }
+        public static Patient AddDoctor(string identityCard, Doctor doctor)
+        {
+            if (doctor == null && identityCard == null) { return null; }
+            var patient = GetPatient(identityCard);
+            if (patient != null)
+            {
+                patient.Doctors.Add(doctor);
+            }
+            return patient;
+        }
+        public static Patient RemoveDoctor(string identityCard, Doctor doctor)
+        {
+            if (doctor == null && identityCard == null) { return null; }
+            var patient = GetPatient(identityCard);
+            if (patient != null)
+            {
+                if (patient.Doctors.Contains(doctor)){
+                    patient.Doctors.Remove(doctor);
+                }
+            }
+            return patient;
+        }
         public static List<Patient> GetPatients()
         {
             return _patients;

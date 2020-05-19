@@ -7,12 +7,12 @@ namespace _17870_LP2.Models
 {
     public enum Genre
     {
-        M,
-        F
+        M, //Male
+        F //Female
     }
     class UserData
     {
-        public string IdentityCard { get; set; } /*Unique*/
+        public string IdentityCard { get; set; } //Unique
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Genre Genre { get; set; }
