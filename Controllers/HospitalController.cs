@@ -1,6 +1,8 @@
-﻿using _17870_LP2.Models;
+﻿using _17870_LP2.Exceptions;
+using _17870_LP2.Models;
 using _17870_LP2.Services;
 using _17870_LP2.View;
+using Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -46,7 +48,11 @@ namespace _17870_LP2.Controllers
             {
                 return _hospitalService.CreateHospital(hospitalName, hospitalAddress);
             }
-            catch (Exception e)
+            catch (HospitalDuplicateException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (DataInconsistencyException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -62,7 +68,7 @@ namespace _17870_LP2.Controllers
             {
                 return _hospitalService.AddDoctor(hospital, doctor);
             }
-            catch (Exception e)
+            catch (DataInconsistencyException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -78,7 +84,7 @@ namespace _17870_LP2.Controllers
             {
                 return _hospitalService.RemoveDoctor(hospital, doctor);
             }
-            catch (Exception e)
+            catch (DataInconsistencyException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -94,7 +100,7 @@ namespace _17870_LP2.Controllers
             {
                 return _hospitalService.AddRoom(hospital, room);
             }
-            catch (Exception e)
+            catch (DataInconsistencyException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -110,7 +116,7 @@ namespace _17870_LP2.Controllers
             {
                 return _hospitalService.RemoveRoom(hospital, room);
             }
-            catch (Exception e)
+            catch (DataInconsistencyException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -126,7 +132,7 @@ namespace _17870_LP2.Controllers
             {
                 return _hospitalService.AddPatient(hospital, patient);
             }
-            catch (Exception e)
+            catch (DataInconsistencyException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -142,7 +148,7 @@ namespace _17870_LP2.Controllers
             {
                 return _hospitalService.RemovePatient(hospital, patient);
             }
-            catch (Exception e)
+            catch (DataInconsistencyException e)
             {
                 Console.WriteLine(e.Message);
             }

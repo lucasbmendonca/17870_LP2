@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "..\Services2\Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileUtilities", "..\HospitalFileUtil2\FileUtilities.csproj", "{BD7C8726-2BF1-48C3-B348-5E46EF2C0C69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "..\Exceptions\Exceptions.csproj", "{3AE4ADFB-C8F8-48C3-9023-B98CDDA61FE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BD7C8726-2BF1-48C3-B348-5E46EF2C0C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD7C8726-2BF1-48C3-B348-5E46EF2C0C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD7C8726-2BF1-48C3-B348-5E46EF2C0C69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AE4ADFB-C8F8-48C3-9023-B98CDDA61FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE4ADFB-C8F8-48C3-9023-B98CDDA61FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE4ADFB-C8F8-48C3-9023-B98CDDA61FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE4ADFB-C8F8-48C3-9023-B98CDDA61FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
