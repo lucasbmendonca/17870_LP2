@@ -1,8 +1,7 @@
-﻿using _17870_LP2.Exceptions;
-using _17870_LP2.Models;
-using _17870_LP2.Services;
-using _17870_LP2.View;
+﻿using _17870_LP2.View;
 using Exceptions;
+using Models;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;

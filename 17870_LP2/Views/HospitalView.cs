@@ -1,6 +1,6 @@
 ﻿using _17870_LP2.Controllers;
 using _17870_LP2.Factory;
-using _17870_LP2.Models;
+using Models;
 using System;
 using System.Collections.Generic;
 

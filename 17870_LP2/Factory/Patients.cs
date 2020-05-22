@@ -1,8 +1,6 @@
-﻿using _17870_LP2.Models;
-using System;
+﻿using Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace _17870_LP2.Factory
 {

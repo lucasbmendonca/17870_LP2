@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Libraries\**" />
+    <EmbeddedResource Remove="Libraries\**" />
+    <None Remove="Libraries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AWSSDK.Core" Version="3.3.106.21" />
     <PackageReference Include="EPPlus" Version="5.1.0" />
     <PackageReference Include="itext7" Version="7.1.11" />
@@ -20,8 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model2\Models.csproj" />
-    <ProjectReference Include="..\Services2\Services.csproj" />
+    <ProjectReference Include="..\17870_LP2_Libraries\Exceptions\Exceptions.csproj" />
+    <ProjectReference Include="..\17870_LP2_Libraries\Models\Models.csproj" />
+    <ProjectReference Include="..\17870_LP2_Libraries\Services\Services.csproj" />
   </ItemGroup>
 
 </Project>
