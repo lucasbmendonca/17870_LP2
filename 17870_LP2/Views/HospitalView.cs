@@ -1,15 +1,17 @@
 ﻿using _17870_LP2.Controllers;
 using _17870_LP2.Factory;
+using _17870_LP2.Interfaces;
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace _17870_LP2.View
 {
     /*
         Main view class for hospital management.
     */
-    class HospitalView
+    class HospitalView: IHospitalView
     {
         #region Attributes
         public static HospitalController _hospitalController;
@@ -19,6 +21,7 @@ namespace _17870_LP2.View
         /// <summary>
         /// Set the main controller.
         /// </summary>
+        
         public static void SetController(HospitalController controller)
         {
             _hospitalController = controller;
