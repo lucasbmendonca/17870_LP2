@@ -5,6 +5,9 @@ using System.Text;
 
 namespace _17870_LP2.Factory
 {
+    /*
+        This is the class responsible for managing an address list.
+    */
     class Addresses
     {
         #region Attributes
@@ -20,6 +23,9 @@ namespace _17870_LP2.Factory
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Create a new address.
+        /// </summary>
         public static Address CreateAddress(string address1, string address2, string city, string state, string country, string postalCode)
         {
             Address address = new Address();
@@ -33,6 +39,9 @@ namespace _17870_LP2.Factory
             return address;
         }
 
+        /// <summary>
+        /// Get all addresses.
+        /// </summary>
         public static List<Address> GetAllAddresses()
         {
             return _addresses;

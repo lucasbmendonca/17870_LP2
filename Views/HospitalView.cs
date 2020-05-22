@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace _17870_LP2.View
 {
+    /*
+        Main view class for hospital management.
+    */
     class HospitalView
     {
         #region Attributes
@@ -13,10 +16,17 @@ namespace _17870_LP2.View
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Set the main controller.
+        /// </summary>
         public static void SetController(HospitalController controller)
         {
             _hospitalController = controller;
         }
+
+        /// <summary>
+        /// Display the hospital view.
+        /// </summary>
         public static void Display()
         {
             Console.WriteLine("Hospital's View");
@@ -82,12 +92,12 @@ namespace _17870_LP2.View
             //Notes with prescription
             Note noteItem = new Note();
             noteItem.Content = "Está com sérios problemas relacionados ao COVID.";
-            noteItem.CreationDateTime = DateTime.Now;
+            noteItem.CreationDateTime = DateTime.Now.ToString();
 
             Prescription prescription = new Prescription();
             prescription.DaysInterval = 9;
             prescription.MedicineName = "Hidroxocloroquina";
-            prescription.ValidityDate = DateTime.Now;
+            prescription.ValidityDate = DateTime.Now.ToString();
 
             noteItem.Prescription = prescription;
 

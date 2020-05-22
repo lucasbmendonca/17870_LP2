@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>17870_LP2</name>
+    </assembly>
+    <members>
+        <member name="M:_17870_LP2.Controllers.HospitalController.#ctor">
+            <summary>
+            Initialization of service class and associated view.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.CreateHospital(System.String,_17870_LP2.Models.Address)">
+            <summary>
+            Create a new hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.AddDoctorToHospital(_17870_LP2.Models.Hospital,_17870_LP2.Models.Doctor)">
+            <summary>
+            Add a new doctor to one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.RemoveDoctorFromHospital(_17870_LP2.Models.Hospital,_17870_LP2.Models.Doctor)">
+            <summary>
+            Remove a doctor from one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.AddRoomToHospital(_17870_LP2.Models.Hospital,_17870_LP2.Models.Room)">
+            <summary>
+            Add a room to one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.RemoveRoomFromHospital(_17870_LP2.Models.Hospital,_17870_LP2.Models.Room)">
+            <summary>
+            Remove a room from hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.AddPatientToHospital(_17870_LP2.Models.Hospital,_17870_LP2.Models.Patient)">
+            <summary>
+            Add a patient to one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.RemovePatientFromHospital(_17870_LP2.Models.Hospital,_17870_LP2.Models.Patient)">
+            <summary>
+            Remove a patient from hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.GetHospital(System.String)">
+            <summary>
+            Get one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.GetAllHospitals">
+            <summary>
+            Get all hospitals.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.GetAllDoctorsFromHospital(System.String)">
+            <summary>
+            Get all doctors from one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.GetAllPatientsFromHospital(System.String)">
+            <summary>
+            Get all patients from one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.GetAllRoomsFromHospital(System.String)">
+            <summary>
+            Get all rooms from one hospital.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.SaveAll">
+            <summary>
+            Save all hospital data and associated objects.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Addresses.CreateAddress(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Create a new address.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Addresses.GetAllAddresses">
+            <summary>
+            Get all addresses.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Patients.CreatePatient(System.String,System.String,System.String,_17870_LP2.Models.Genre,System.Int32,System.String,_17870_LP2.Models.Address,_17870_LP2.Models.Room,System.Collections.Generic.List{_17870_LP2.Models.Doctor})">
+            <summary>
+            Create a new patient.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Patients.RemovePatient(System.String)">
+            <summary>
+            Remove one patient.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Patients.GetPatient(System.String)">
+            <summary>
+            Get one patient by Identity Card.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Patients.AddNote(System.String,_17870_LP2.Models.Note)">
+            <summary>
+            Add one note to a patient.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Patients.AddDoctor(System.String,_17870_LP2.Models.Doctor)">
+            <summary>
+            Add a doctor to patient.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Patients.RemoveDoctor(System.String,_17870_LP2.Models.Doctor)">
+            <summary>
+            Remove one doctor from patient.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Factory.Patients.GetPatients">
+            <summary>
+            Get all patients.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Doctors.CreateDoctor(System.String,System.String,System.String,_17870_LP2.Models.Genre,System.Int32,System.String,_17870_LP2.Models.Address,System.Collections.Generic.ICollection{_17870_LP2.Models.Specialization})">
+            <summary>
+            Create a new doctor.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Doctors.RemoveDoctor(System.String)">
+            <summary>
+            Remove one doctor.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Doctors.GetDoctor(System.String)">
+            <summary>
+            Get one doctor by Identity Card.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.Doctors.GetDoctors">
+            <summary>
+            Get all doctors.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.View.HospitalView.SetController(_17870_LP2.Controllers.HospitalController)">
+            <summary>
+            Set the main controller.
+            </summary>
+        </member>
+        <member name="M:_17870_LP2.View.HospitalView.Display">
+            <summary>
+            Display the hospital view.
+            </summary>
+        </member>
+    </members>
+</doc>

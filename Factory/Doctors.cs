@@ -6,6 +6,9 @@ using System.Text;
 
 namespace _17870_LP2
 {
+    /*
+        This is the class responsible for managing a doctor list.
+    */
     class Doctors
     {
         #region Attributes
@@ -21,6 +24,9 @@ namespace _17870_LP2
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Create a new doctor.
+        /// </summary>
         public static Doctor CreateDoctor(string identityCard, string firstName, string lastName, Genre genre, int age, string contact, Address address, ICollection<Specialization> specializations)
         {
             //check if the doctor already exists
@@ -42,6 +48,10 @@ namespace _17870_LP2
             }
             return null;
         }
+
+        /// <summary>
+        /// Remove one doctor.
+        /// </summary>
         public static bool RemoveDoctor(string identityCard)
         {
             //Check if the doctor exists
@@ -54,10 +64,18 @@ namespace _17870_LP2
             }
             return false;
         }
+
+        /// <summary>
+        /// Get one doctor by Identity Card.
+        /// </summary>
         public static Doctor GetDoctor(string identityCard)
         {
             return _doctors.Where(i => i.IdentityCard == identityCard).FirstOrDefault();
         }
+
+        /// <summary>
+        /// Get all doctors.
+        /// </summary>
         public static List<Doctor> GetDoctors()
         {
             return _doctors;

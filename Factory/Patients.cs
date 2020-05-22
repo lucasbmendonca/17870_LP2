@@ -6,6 +6,9 @@ using System.Text;
 
 namespace _17870_LP2.Factory
 {
+    /*
+        This is the class responsible for managing a patient list.
+    */
     class Patients
     {
         #region Attributes
@@ -21,6 +24,9 @@ namespace _17870_LP2.Factory
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Create a new patient.
+        /// </summary>
         public static Patient CreatePatient(string identityCard, string firstName, string lastName, Genre genre, int age, string contact, Address address, Room room, List<Doctor> doctors)
         {
             //check if the patient already exists
@@ -45,6 +51,10 @@ namespace _17870_LP2.Factory
             }
             return null;
         }
+        
+        /// <summary>
+        /// Remove one patient.
+        /// </summary>
         public static bool RemovePatient(string identityCard)
         {
             //Check if the doctor exists
@@ -57,10 +67,18 @@ namespace _17870_LP2.Factory
             }
             return false;
         }
+
+        /// <summary>
+        /// Get one patient by Identity Card.
+        /// </summary>
         public static Patient GetPatient(string identityCard)
         {
             return _patients.Where(i => i.IdentityCard == identityCard).FirstOrDefault();
         }
+
+        /// <summary>
+        /// Add one note to a patient.
+        /// </summary>
         public static Patient AddNote(string identityCard, Note note)
         {
             if (note == null) { return null; }
@@ -71,6 +89,10 @@ namespace _17870_LP2.Factory
             }
             return patient;
         }
+
+        /// <summary>
+        /// Add a doctor to patient.
+        /// </summary>
         public static Patient AddDoctor(string identityCard, Doctor doctor)
         {
             if (doctor == null && identityCard == null) { return null; }
@@ -81,6 +103,10 @@ namespace _17870_LP2.Factory
             }
             return patient;
         }
+
+        /// <summary>
+        /// Remove one doctor from patient.
+        /// </summary>
         public static Patient RemoveDoctor(string identityCard, Doctor doctor)
         {
             if (doctor == null && identityCard == null) { return null; }
@@ -93,6 +119,10 @@ namespace _17870_LP2.Factory
             }
             return patient;
         }
+
+        /// <summary>
+        /// Get all patients.
+        /// </summary>
         public static List<Patient> GetPatients()
         {
             return _patients;
