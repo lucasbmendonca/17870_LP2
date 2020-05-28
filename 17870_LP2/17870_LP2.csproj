@@ -11,8 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Diagrams\**" />
     <Compile Remove="Libraries\**" />
+    <EmbeddedResource Remove="Diagrams\**" />
     <EmbeddedResource Remove="Libraries\**" />
+    <None Remove="Diagrams\**" />
     <None Remove="Libraries\**" />
   </ItemGroup>
 

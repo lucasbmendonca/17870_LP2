@@ -16,11 +16,6 @@ namespace Models
             get { return this.creationDateTime.ToString("yyyy-MM-dd HH:mm:ss"); }
             set { this.creationDateTime = DateTime.Parse(value); }
         }
-        public string CreationDateTimeString
-        {
-            get { return this.creationDateTime.ToString("yyyy-MM-dd HH:mm:ss"); }
-            set { this.creationDateTime = DateTime.Parse(value); }
-        }
         public virtual Prescription Prescription { get; set; }
     }
 }
