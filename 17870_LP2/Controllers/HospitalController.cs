@@ -201,6 +201,22 @@ namespace _17870_LP2.Controllers
         {
             return _hospitalService.SaveAll();
         }
+
+        /// <summary>
+        /// Total consultation of infected patients.
+        /// </summary>
+        public void GetTotalInfected(string hospitalName)
+        {
+            try
+            {
+                int total = _hospitalService.GetTotalInfected(hospitalName);
+                Console.WriteLine("Total infected in" + hospitalName + ": " + total);
+            }
+            catch(DataInconsistencyException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         #endregion
     }
 }

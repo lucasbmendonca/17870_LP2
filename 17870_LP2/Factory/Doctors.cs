@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Exceptions;
+using Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,7 +45,7 @@ namespace _17870_LP2
                 _doctors.Add(doctor);
                 return doctor;
             }
-            return null;
+            throw new DataInconsistencyException("The doctor " + firstName + " already exists in the local list.");
         }
 
         /// <summary>

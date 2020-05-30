@@ -1,6 +1,7 @@
 ﻿using _17870_LP2.Controllers;
 using _17870_LP2.Factory;
 using _17870_LP2.Interfaces;
+using Exceptions;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,24 @@ namespace _17870_LP2.View
 {
     /*
         Main view class for hospital management.
+        In an ideal scenario, the view would have the fields 
+        for the user to enter the hospital data. Input fields
+        and listbox would be used, for example. In addition, 
+        there would be greater control over data validation, 
+        since the choice lists, in the example for the 
+        doctor's specialization, would only be filled with 
+        values ​​registered for that enumeration. 
+        Avoiding data inconsistency.
     */
-    class HospitalView: IHospitalView
+    class HospitalView : IHospitalView
     {
         #region Attributes
+        /* This controller is only responsible 
+           for managing the list of hospitals, 
+           as well as associating patients, doctors, 
+           rooms and other pertinent information 
+           from one hospital.
+        */
         public static HospitalController _hospitalController;
         #endregion
 
@@ -21,14 +36,16 @@ namespace _17870_LP2.View
         /// <summary>
         /// Set the main controller.
         /// </summary>
-        
+
         public static void SetController(HospitalController controller)
         {
             _hospitalController = controller;
         }
 
         /// <summary>
-        /// Display the hospital view.
+        /// Display the hospital view with data filling scenarios.
+        /// For the testing scenario, the information below has to be exchanged, 
+        /// as it may already have been previously recorded in the BIN file.
         /// </summary>
         public static void Display()
         {
@@ -36,11 +53,8 @@ namespace _17870_LP2.View
 
             #region New Hospital
             //Add new Hospital
-            var hospitalAddress = Addresses.CreateAddress("Rod. Washington Luiz, s/nº", "Jardim Primavera", "Duque de Caxias", "Rio de Janeiro", "Brasil", "25264-180");
-            var hospital = _hospitalController.CreateHospital("Adão Pereira Nunes", hospitalAddress);
-
-            hospitalAddress = Addresses.CreateAddress("Rod. Washington Luíz, 3200", "Parque Beira Mar", "Duque de Caxias", "Rio de Janeiro", "Brasil", "25085-009");
-            var hospital2 = _hospitalController.CreateHospital("Moacyr do Carmo", hospitalAddress);
+            var hospital = CreateHospital("Adão Pereira Nunes", Addresses.CreateAddress("Rod. Washington Luiz, s/nº", "Jardim Primavera", "Duque de Caxias", "Rio de Janeiro", "Brasil", "25264-180"));
+            var hospital2 = CreateHospital("Moacyr do Carmo", Addresses.CreateAddress("Rod. Washington Luíz, 3200", "Parque Beira Mar", "Duque de Caxias", "Rio de Janeiro", "Brasil", "25085-009"));
             #endregion
 
             #region New Doctors in Hospital
@@ -49,63 +63,78 @@ namespace _17870_LP2.View
             specializations.Add(Specialization.Family_medicine);
             specializations.Add(Specialization.Neurology);
             specializations.Add(Specialization.Medical_genetics);
+           
+            try
+            {
+                //Doctor's address
+                var doctorAddress = Addresses.CreateAddress("Rua A7, nº 112", "Jardim Anhangá", "Duque de Caxias", "Rio de Janeiro", "Brasil", "25264-180");
+                
+                var doctor = AddDoctorToHospital(hospital, Doctors.CreateDoctor("12345", "Lucas", "Braga Mendonça", Genre.M, 24, "(+55) 98078-2505", doctorAddress, specializations));
 
-            //Doctor's address
-            var doctorAddress = Addresses.CreateAddress("Rua A7, nº 112", "Jardim Anhangá", "Duque de Caxias", "Rio de Janeiro", "Brasil", "25264-180");
-            
-            var doctor = Doctors.CreateDoctor("12345", "Lucas", "Braga Mendonça", Genre.M, 24,"(+55) 98078-2505", doctorAddress, specializations);
-            if (hospital != null && doctor !=null)
-                _hospitalController.AddDoctorToHospital(hospital, doctor);
+                #region New Room in Hospital
+                //Add room to the hospital
+                Room room = new Room();
+                room.Number = 1;
+                room.IsAvailable = true;
+                var roomHospital = AddRoomToHospital(hospital, room);
+                #endregion
 
-            var doctor2 = Doctors.CreateDoctor("54321", "Beatriz", "Braga Costa", Genre.F, 21, "(+55) 98078-2000", doctorAddress, specializations);
-            if (hospital2 != null && doctor2 != null)
-                _hospitalController.AddDoctorToHospital(hospital2, doctor2);
-            #endregion
+                #region New Patient in Hospital
+                //Add new patient to the hospital
 
-            #region New Room in Hospital
-            //Add room to the hospital
-            Room room = new Room();
-            room.Number = 1;
-            room.IsAvailable = true;
-            var roomHospital = _hospitalController.AddRoomToHospital(hospital, room);
-            #endregion
+                //address
+                var patientAddress = Addresses.CreateAddress("Rua Itapeva", "Leblon", "Rio de Janeiro", "Rio de Janeiro", "Brasil", "44566-010");
 
-            #region New Patient in Hospital
-            //Add new patient to the hospital
-            
-            //address
-            var patientAddress = Addresses.CreateAddress("Rua Itapeva", "Leblon", "Rio de Janeiro", "Rio de Janeiro", "Brasil", "44566-010");
-            
-            //doctors associated with patient
-            List<Doctor> doctors = new List<Doctor>();
-            doctors.Add(doctor);
-            
-            var patient = Patients.CreatePatient("54321", "Joãozinho", "Nunes", Genre.M, 19, "(+55)98767-5489", patientAddress, roomHospital, doctors);
-            _hospitalController.AddPatientToHospital(hospital, patient);
-            #endregion
+                //doctors associated with patient
+                List<Doctor> doctors = new List<Doctor>();
+                doctors.Add(doctor);
 
-            #region Add specific informations about patient
-            //Diseases
-            Disease diseaseItem = new Disease();
-            diseaseItem.Name = "Coronavirus";
-            diseaseItem.Description = "...";
-            List<Disease> diseases = new List<Disease>();
-            diseases.Add(diseaseItem);
+                var patient = Patients.CreatePatient("54321", "Joãozinho", "Nunes", Genre.M, 19, "(+55)98767-5489", patientAddress, roomHospital, doctors);
+                AddPatientToHospital(hospital, patient);
+                #endregion
 
-            //Notes with prescription
-            Note noteItem = new Note();
-            noteItem.Content = "Está com sérios problemas relacionados ao COVID.";
-            noteItem.CreationDateTime = DateTime.Now.ToString();
+                #region Add specific informations about patient
+                //Diseases
+                Disease diseaseItem = new Disease();
+                diseaseItem.Name = "Coronavirus";
+                diseaseItem.Description = "...";
+                List<Disease> diseases = new List<Disease>();
+                diseases.Add(diseaseItem);
 
-            Prescription prescription = new Prescription();
-            prescription.DaysInterval = 9;
-            prescription.MedicineName = "Hidroxocloroquina";
-            prescription.ValidityDate = DateTime.Now.ToString();
+                //Notes with prescription
+                Note noteItem = new Note();
+                noteItem.Content = "Está com sérios problemas relacionados ao COVID.";
+                noteItem.CreationDateTime = DateTime.Now.ToString();
 
-            noteItem.Prescription = prescription;
+                Prescription prescription = new Prescription();
+                prescription.DaysInterval = 9;
+                prescription.MedicineName = "Hidroxocloroquina";
+                prescription.ValidityDate = DateTime.Now.ToString();
 
-            patient.Diseases.Add(diseaseItem);
-            patient.Notes.Add(noteItem);
+                noteItem.Prescription = prescription;
+
+                patient.Diseases.Add(diseaseItem);
+                patient.Notes.Add(noteItem);
+                #endregion
+
+            }
+            catch (DataInconsistencyException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            try
+            {
+                //Doctor's address
+                var doctorAddress = Addresses.CreateAddress("Rua Rodrigues, nº 112", "Imbarie", "Duque de Caxias", "Rio de Janeiro", "Brasil", "25264-180");
+                
+                var doctor = Doctors.CreateDoctor("54321", "Beatriz", "Braga Costa", Genre.F, 21, "(+55) 98078-2000", doctorAddress, specializations);
+                AddDoctorToHospital(hospital2, doctor);
+            }
+            catch (DataInconsistencyException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             #endregion
 
             #region Remove Patients from Hospital
@@ -122,10 +151,39 @@ namespace _17870_LP2.View
             */
             #endregion
 
+            #region Total infected by hospital
+            GetTotalInfected("Adão Pereira Nunes");
+            #endregion
+
             #region Save Data
             //Save All
-            _hospitalController.SaveAll();
+            SaveAll();
             #endregion
+        }
+
+        private static Patient AddPatientToHospital(Hospital hospital, Patient patient)
+        {
+            return _hospitalController.AddPatientToHospital(hospital, patient);
+        }
+        private static Room AddRoomToHospital(Hospital hospital, Room room)
+        {
+            return _hospitalController.AddRoomToHospital(hospital, room);
+        }
+        private static Doctor AddDoctorToHospital(Hospital hospital, Doctor doctor)
+        {
+            return _hospitalController.AddDoctorToHospital(hospital, doctor);
+        }
+        private static void SaveAll()
+        {
+            _hospitalController.SaveAll();
+        }
+        private static Hospital CreateHospital(string hospitalName, Address hospitalAddress)
+        {
+            return _hospitalController.CreateHospital(hospitalName, hospitalAddress);
+        }
+        private static void GetTotalInfected(string hospitalName)
+        {
+            _hospitalController.GetTotalInfected(hospitalName);
         }
         #endregion
     }

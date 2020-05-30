@@ -74,6 +74,11 @@
             Save all hospital data and associated objects.
             </summary>
         </member>
+        <member name="M:_17870_LP2.Controllers.HospitalController.GetTotalInfected(System.String)">
+            <summary>
+            Total consultation of infected patients.
+            </summary>
+        </member>
         <member name="M:_17870_LP2.Factory.Addresses.CreateAddress(System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Create a new address.
@@ -146,7 +151,9 @@
         </member>
         <member name="M:_17870_LP2.View.HospitalView.Display">
             <summary>
-            Display the hospital view.
+            Display the hospital view with data filling scenarios.
+            For the testing scenario, the information below has to be exchanged, 
+            as it may already have been previously recorded in the BIN file.
             </summary>
         </member>
     </members>

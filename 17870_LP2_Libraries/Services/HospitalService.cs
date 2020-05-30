@@ -300,6 +300,22 @@ namespace Services
             }
             return false;
         }
+
+        /// <summary>
+        /// Total consultation of infected patients.
+        /// </summary>
+        public int GetTotalInfected(string hospitalName)
+        {
+            var hospital = _hospitals.Where(h => h.Name == hospitalName).FirstOrDefault();
+            if (hospital != null)
+            {
+                return hospital.Patients.Count();
+            }
+            else
+            {
+                throw new DataInconsistencyException("Hospital " + hospitalName + " not found.");
+            }
+        }
         #endregion
     }
 }
